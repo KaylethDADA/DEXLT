@@ -46,6 +46,7 @@ namespace DexTg.Entities.Entities
 
 
         ///TODO: Посмотреть в сторону fluenValidator, анализ Guard в чем отличие
+        ///TODO:Заменить тексты ошибок на тексты из класса ValidatorMessages
 
         /// <summary>
         /// Метод для проверки корректности ФИО

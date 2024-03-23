@@ -12,15 +12,26 @@ namespace DexTg.Entities.ValueObjects
         /// <returns></returns>
         public override bool Equals(object? obj)
         {
-            if (obj is not BaseValueObjects entity || entity == null)
-                return false;
+            //if (obj is not BaseValueObjects entity || entity == null)
+            //    return false;
 
-            var serialEnti = Serialize(entity);
-            var serialThis = Serialize(this);
+            //var serialEnti = Serialize(entity);
+            //var serialThis = Serialize(this);
 
-            ///TODO: Разобраться в String.Compare
-            if (String.Compare(serialEnti, serialThis) != 0)
+            /////TODO: Разобраться в String.Compare
+            //if (String.Compare(serialEnti, serialThis) != 0)
+            //    return false;
+
+            if (obj is not BaseValueObjects entity)
+            {
                 return false;
+            }
+
+            if (entity == null)
+            {
+                return false;
+            }
+
 
             ///TODO: Написать сравнение через рефлексию через DeepCompare
             return true;
@@ -32,7 +43,7 @@ namespace DexTg.Entities.ValueObjects
         public override int GetHashCode()
         {
             //TODO:Реализовать getHashCode
-            //У стринги получать код легче получить
+            //У стринги получать код легче получить + 
             return Serialize(this).GetHashCode();
         }
         /// <summary>

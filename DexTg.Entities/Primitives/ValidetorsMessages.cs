@@ -2,9 +2,9 @@
 {
     public static class ValidetorsMessages
     {
-        ///TODO: как сделать шаблоном (StrinFormatter)
-        public static string IsNullOrError = "Сущность  {entity} не может быть null, или пустой";
-        
-        ///TODO: Отдельна
+        //TODO:Как сделать шаблон StringFormatter
+        public static string IsNullOrEmpty { get; set; } = "Сущность не может быть NULL или пустой";
+
+        //TODO:Отдельно 
     }
 }
