@@ -1,4 +1,5 @@
-﻿using DexTg.Entities.ValueObjects;
+﻿using DexTg.Entities.Primitives;
+using DexTg.Entities.ValueObjects;
 using System.Text.RegularExpressions;
 
 namespace DexTg.Entities.Entities
@@ -38,6 +39,13 @@ namespace DexTg.Entities.Entities
         /// Ник tg
         /// </summary>
         public string Telegram { get; set; }
+        /// <summary>
+        /// Гендер
+        /// </summary>
+        public Gender Gender { get; set; }
+
+
+        ///TODO: Посмотреть в сторону fluenValidator, анализ Guard в чем отличие
 
         /// <summary>
         /// Метод для проверки корректности ФИО
@@ -66,7 +74,7 @@ namespace DexTg.Entities.Entities
         private bool IsValidString(string str)
         {
             if (string.IsNullOrEmpty(str))
-                throw new ArgumentNullException("");
+                throw new ArgumentNullException(ValidetorsMessages.IsNullOrError);
 
             return Regex.IsMatch(str, @"^[a-zа-я]+$", RegexOptions.IgnoreCase);
         } 

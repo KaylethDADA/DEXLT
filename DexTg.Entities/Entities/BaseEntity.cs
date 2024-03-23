@@ -17,23 +17,20 @@
         /// <returns></returns>
         public override bool Equals(object? obj)
         {
-            if (obj == null)
-                return false;
-            else if (obj is not BaseEntity entity)
-                return false;
-            else if (entity.Id != Id)
+            if (obj is not BaseEntity entity)
                 return false;
 
-            return true;
+            return this.GetHashCode() == entity.GetHashCode();
         }
-
         /// <summary>
         /// Переопределение метода для получения хэш-кода объекта.
         /// </summary>
         /// <returns></returns>
+        /// TODO: Либо написать свой GetHashCode но ххпхпхп
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+           
         }
     }
 }
