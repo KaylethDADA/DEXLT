@@ -11,19 +11,19 @@ namespace DexTg.Entities.Validators
         public PersonValidator()
         {
             RuleFor(person => person.FullName)
-               .NotEmpty().WithMessage(p => ValidetorsMessages.IsNullOrEmpty.Format(nameof(p.FullName)))
+               .NotEmpty().WithMessage(p => ValidetorsMessages.IsNullOrEmpty.FormatError(nameof(p.FullName)))
                .DependentRules(() =>
                {
                    RuleFor(p => p.FullName.FirstName)
-                       .Must(BeValidString).WithMessage(p => ValidetorsMessages.IsValidString.Format(nameof(p.FullName.FirstName)))
+                       .Must(BeValidString).WithMessage(p => ValidetorsMessages.IsValidString.FormatError(nameof(p.FullName.FirstName)))
                        .When(p => !string.IsNullOrEmpty(p.FullName.FirstName));
                        
                    RuleFor(p => p.FullName.LastName)
-                       .Must(BeValidString).WithMessage(p => ValidetorsMessages.IsValidString.Format(nameof(p.FullName.LastName)))
+                       .Must(BeValidString).WithMessage(p => ValidetorsMessages.IsValidString.FormatError(nameof(p.FullName.LastName)))
                        .When(p => !string.IsNullOrEmpty(p.FullName.LastName));
 
                    RuleFor(p => p.FullName.MiddleName)
-                       .Must(BeValidString!).WithMessage(p => ValidetorsMessages.IsValidString.Format(nameof(p.FullName.MiddleName)))
+                       .Must(BeValidString!).WithMessage(p => ValidetorsMessages.IsValidString.FormatError(nameof(p.FullName.MiddleName)))
                        .When(p => p.FullName != null && !string.IsNullOrEmpty(p.FullName?.MiddleName));
                });
 

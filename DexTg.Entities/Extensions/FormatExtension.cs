@@ -2,7 +2,7 @@
 {
     public static class FormatExtension
     {
-        public static string Format(this string text, object? obj)
+        public static string FormatError(this string text, object? obj)
         {
             if (obj == null)
                 return text;
