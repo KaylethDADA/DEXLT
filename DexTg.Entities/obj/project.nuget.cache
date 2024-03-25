@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "uAAx/bYZ5lj1n0buBJ8DhQCU1mBYXe6zNraK8giV8kbNE/xjCG1MRLiFL0RlXJI8i2JHFpU+d6Hfy1HPdbeTsg==",
+  "dgSpecHash": "dS7lcdBQzUDsUkAcWKGeJfI/DOMZs0Ru4w1Ih2P7owTZh5sv+bCfB75YgsNh6Vq1PUi0ncOQ16dq1QihJljBZA==",
   "success": true,
   "projectFilePath": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\DexTg.Entities.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\glebg\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512"
+  ],
   "logs": []
 }

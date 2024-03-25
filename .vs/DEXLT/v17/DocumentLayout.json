@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Program Files\\Projects\\DEXLT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|d:\\program files\\projects\\dexlt\\dextg.entities\\valueobjects\\basevalueobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|solutionrelative:dextg.entities\\valueobjects\\basevalueobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|d:\\program files\\projects\\dexlt\\dextg.entities\\validators\\personvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|solutionrelative:dextg.entities\\validators\\personvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|d:\\program files\\projects\\dexlt\\dextg.entities\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|solutionrelative:dextg.entities\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|d:\\program files\\projects\\dexlt\\dextg.entities\\entities\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67264624-17FB-49CE-9855-7C70AB29FC74}|DexTg.Entities\\DexTg.Entities.csproj|solutionrelative:dextg.entities\\entities\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\Entities\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "DexTg.Entities\\Entities\\BaseEntity.cs",
-              "ToolTip": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\Entities\\BaseEntity.cs",
-              "RelativeToolTip": "DexTg.Entities\\Entities\\BaseEntity.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAApAAAA",
+              "DocumentIndex": 0,
+              "Title": "PersonValidator.cs",
+              "DocumentMoniker": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\Validators\\PersonValidator.cs",
+              "RelativeDocumentMoniker": "DexTg.Entities\\Validators\\PersonValidator.cs",
+              "ToolTip": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\Validators\\PersonValidator.cs",
+              "RelativeToolTip": "DexTg.Entities\\Validators\\PersonValidator.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAIAwwBoAAABnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T20:35:17.56Z",
+              "WhenOpened": "2024-03-25T17:41:09.767Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BaseValueObjects.cs",
-              "DocumentMoniker": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\ValueObjects\\BaseValueObjects.cs",
-              "RelativeDocumentMoniker": "DexTg.Entities\\ValueObjects\\BaseValueObjects.cs",
-              "ToolTip": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\ValueObjects\\BaseValueObjects.cs",
-              "RelativeToolTip": "DexTg.Entities\\ValueObjects\\BaseValueObjects.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAfAAAA",
+              "DocumentIndex": 1,
+              "Title": "Person.cs",
+              "DocumentMoniker": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\Entities\\Person.cs",
+              "RelativeDocumentMoniker": "DexTg.Entities\\Entities\\Person.cs",
+              "ToolTip": "D:\\Program Files\\Projects\\DEXLT\\DexTg.Entities\\Entities\\Person.cs",
+              "RelativeToolTip": "DexTg.Entities\\Entities\\Person.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T19:13:28.191Z",
+              "WhenOpened": "2024-03-24T20:44:21.18Z",
               "EditorCaption": ""
             }
           ]

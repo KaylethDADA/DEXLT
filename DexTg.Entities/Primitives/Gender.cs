@@ -2,7 +2,7 @@
 {
     public enum Gender
     {
-        Underfine = 0,
+        Undefined = 0,
 
         Man = 1,
         Woman = 2,
