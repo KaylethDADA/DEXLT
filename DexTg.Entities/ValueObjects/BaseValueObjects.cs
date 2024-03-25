@@ -12,26 +12,26 @@ namespace DexTg.Entities.ValueObjects
         /// <returns></returns>
         public override bool Equals(object? obj)
         {
-            //if (obj is not BaseValueObjects entity || entity == null)
+
+            //if (obj is not BaseValueObjects entity)
+            //{
             //    return false;
+            //}
 
-            //var serialEnti = Serialize(entity);
-            //var serialThis = Serialize(this);
-
-            /////TODO: Разобраться в String.Compare
-            //if (String.Compare(serialEnti, serialThis) != 0)
+            //if (entity == null)
+            //{
             //    return false;
+            //}
 
-            if (obj is not BaseValueObjects entity)
-            {
+            if (obj is not BaseValueObjects entity || entity == null)
                 return false;
-            }
 
-            if (entity == null)
-            {
+            var serialEnti = Serialize(entity);
+            var serialThis = Serialize(this);
+
+            ///TODO: Разобраться в String.Compare
+            if (String.Compare(serialEnti, serialThis) != 0)
                 return false;
-            }
-
 
             ///TODO: Написать сравнение через рефлексию через DeepCompare
             return true;
