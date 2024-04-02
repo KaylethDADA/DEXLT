@@ -1,5 +1,4 @@
 ﻿using DexTg.Entities.Entities;
-using DexTg.Entities.Extensions;
 using DexTg.Entities.Primitives;
 using FluentValidation;
 using System.Text.RegularExpressions;
@@ -10,22 +9,12 @@ namespace DexTg.Entities.Validators
     {
         public PersonValidator()
         {
-            RuleFor(person => person.FullName)
-               .NotEmpty().WithMessage(p => ValidetorsMessages.IsNullOrEmpty.FormatError(nameof(p.FullName)))
-               .DependentRules(() =>
-               {
-                   RuleFor(p => p.FullName.FirstName)
-                       .Must(BeValidString).WithMessage(p => ValidetorsMessages.IsValidString.FormatError(nameof(p.FullName.FirstName)))
-                       .When(p => !string.IsNullOrEmpty(p.FullName.FirstName));
-                       
-                   RuleFor(p => p.FullName.LastName)
-                       .Must(BeValidString).WithMessage(p => ValidetorsMessages.IsValidString.FormatError(nameof(p.FullName.LastName)))
-                       .When(p => !string.IsNullOrEmpty(p.FullName.LastName));
+            RuleFor(x => x)
+                .NotEmpty()
+                .WithMessage(string.Format(ValidetorsMessages.IsNullOrEmpty, nameof(Person)));
 
-                   RuleFor(p => p.FullName.MiddleName)
-                       .Must(BeValidString!).WithMessage(p => ValidetorsMessages.IsValidString.FormatError(nameof(p.FullName.MiddleName)))
-                       .When(p => p.FullName != null && !string.IsNullOrEmpty(p.FullName?.MiddleName));
-               });
+            RuleFor(p => p.FullName)
+                    .SetValidator(new FullNameValidator());
 
             RuleFor(p => p.BirthDay)
                 .Must(BeValidAge).WithMessage(ValidetorsMessages.ValidAge);
@@ -37,16 +26,6 @@ namespace DexTg.Entities.Validators
             RuleFor(p => p.Telegram)
                 .NotEmpty().WithMessage(ValidetorsMessages.IsNullOrEmpty)
                 .Must(StartsWithAtSymbol).WithMessage(ValidetorsMessages.ValidTelegram);
-        }
-
-        /// <summary>
-        /// Проверка того, что строка содержит только буквы
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        private bool BeValidString(string str)
-        {
-            return Regex.IsMatch(str, @"^[a-zа-я]+$", RegexOptions.IgnoreCase);
         }
         /// <summary>
         /// Проверка на возраст
