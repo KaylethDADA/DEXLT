@@ -1,7 +1,7 @@
 ﻿using Application.Dtos.Person;
 using AutoMapper;
-using DexTg.Entities.ValueObjects;
 using Domain.Entities;
+using Domain.ValueObjects;
 
 namespace Application.Mappings
 {
