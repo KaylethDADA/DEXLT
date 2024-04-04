@@ -1,15 +1,11 @@
-﻿using DexTg.Entities.Primitives;
+﻿using DexTg.Entities.Primitives.Enums;
+using DexTg.Entities.Validators;
 using DexTg.Entities.ValueObjects;
 
 namespace DexTg.Entities.Entities
 {
     public class Person : BaseEntity
-    {
-        public Person()
-        {
-
-        }
-
+    { 
         /// <summary>
         /// Полное имя
         /// </summary>
@@ -34,5 +30,15 @@ namespace DexTg.Entities.Entities
         /// Гендер
         /// </summary>
         public Gender Gender { get; set; }
+        /// <summary>
+        /// Кастомные поля
+        /// </summary>
+        public List<CustomField<string>> CustomFields { get; set; }
+
+        public Person()
+        {
+            var validationService = new PersonValidation();
+            validationService.Validate(this);
+        }
     }
 }

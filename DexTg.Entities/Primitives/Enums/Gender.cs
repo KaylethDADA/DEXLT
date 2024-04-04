@@ -1,4 +1,4 @@
-﻿namespace DexTg.Entities.Primitives
+﻿namespace DexTg.Entities.Primitives.Enums
 {
     public enum Gender
     {

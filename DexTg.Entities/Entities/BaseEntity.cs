@@ -20,6 +20,7 @@
             if (obj is not BaseEntity entity)
                 return false;
 
+            //id == entity.id
             return this.GetHashCode() == entity.GetHashCode();
         }
         /// <summary>
@@ -29,8 +30,7 @@
         /// TODO: Либо написать свой GetHashCode но ххпхпхп
         public override int GetHashCode()
         {
-            return Id.GetHashCode();
-           
+            return Id.GetHashCode();          
         }
     }
 }

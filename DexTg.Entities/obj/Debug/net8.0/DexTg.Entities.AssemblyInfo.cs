@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DexTg.Entities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbeb1010540143df01e1a812b745a550ee2679af")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88c7a9edb987a79959073f70c4ca7ec6cac725eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("DexTg.Entities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DexTg.Entities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
