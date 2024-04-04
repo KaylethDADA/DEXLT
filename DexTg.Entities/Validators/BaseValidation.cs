@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace DexTg.Entities.Validators
+namespace Domain.Validators
 {
     public static class BaseValidation
     {

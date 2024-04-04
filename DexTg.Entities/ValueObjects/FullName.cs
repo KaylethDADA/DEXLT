@@ -1,4 +1,4 @@
-﻿namespace DexTg.Entities.ValueObjects
+﻿namespace Domain.ValueObjects
 {
     /// <summary>
     /// Полное имя

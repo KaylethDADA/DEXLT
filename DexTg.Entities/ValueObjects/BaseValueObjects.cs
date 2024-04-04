@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace DexTg.Entities.ValueObjects
+namespace Domain.ValueObjects
 {
     ///TODO: как сравнивать эти объекты (DeepClone, DeepComparse)
     public abstract class BaseValueObjects
@@ -30,7 +30,7 @@ namespace DexTg.Entities.ValueObjects
             var serialThis = Serialize(this);
 
             ///TODO: Разобраться в String.Compare
-            if (String.Compare(serialEnti, serialThis) != 0)
+            if (string.Compare(serialEnti, serialThis) != 0)
                 return false;
 
             ///TODO: Написать сравнение через рефлексию через DeepCompare

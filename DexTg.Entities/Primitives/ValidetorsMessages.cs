@@ -1,4 +1,4 @@
-﻿namespace DexTg.Entities.Primitives
+﻿namespace Domain.Primitives
 {
     public static class ValidetorsMessages
     {

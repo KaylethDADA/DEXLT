@@ -1,8 +1,8 @@
-﻿using Application.Interface;
-using Application.xs.Person;
+﻿using Application.Dtos.Person;
+using Application.Interface;
 using AutoMapper;
-using DexTg.Entities.Entities;
 using DexTg.Entities.ValueObjects;
+using Domain.Entities;
 
 namespace Application.Sevices
 {

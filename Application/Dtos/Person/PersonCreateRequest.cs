@@ -1,4 +1,4 @@
-﻿namespace Application.xs.Person
+﻿namespace Application.Dtos.Person
 {
     /// <summary>
     /// Дто для создания Person

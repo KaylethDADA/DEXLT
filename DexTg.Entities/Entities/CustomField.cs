@@ -1,4 +1,4 @@
-﻿namespace DexTg.Entities.Entities
+﻿namespace Domain.Entities
 {
     public class CustomField<TType> : BaseEntity
     {

@@ -1,11 +1,11 @@
-﻿using DexTg.Entities.Primitives.Enums;
-using DexTg.Entities.Validators;
-using DexTg.Entities.ValueObjects;
+﻿using Domain.Primitives.Enums;
+using Domain.Validators;
+using Domain.ValueObjects;
 
-namespace DexTg.Entities.Entities
+namespace Domain.Entities
 {
     public class Person : BaseEntity
-    { 
+    {
         /// <summary>
         /// Полное имя
         /// </summary>

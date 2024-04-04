@@ -1,6 +1,6 @@
-﻿using DexTg.Entities.Primitives.Enums;
+﻿using Domain.Primitives.Enums;
 
-namespace Application.xs.Person
+namespace Application.Dtos.Person
 {
     /// <summary>
     /// Базовое дто для Person

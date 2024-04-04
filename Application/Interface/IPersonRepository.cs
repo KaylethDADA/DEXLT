@@ -1,4 +1,4 @@
-﻿using DexTg.Entities.Entities;
+﻿using Domain.Entities;
 
 namespace Application.Interface
 {

@@ -1,4 +1,4 @@
-﻿namespace DexTg.Entities.Entities
+﻿namespace Domain.Entities
 {
     /// <summary>
     /// Базовый абстрактный класс сущности.
@@ -21,7 +21,7 @@
                 return false;
 
             //id == entity.id
-            return this.GetHashCode() == entity.GetHashCode();
+            return GetHashCode() == entity.GetHashCode();
         }
         /// <summary>
         /// Переопределение метода для получения хэш-кода объекта.
@@ -30,7 +30,7 @@
         /// TODO: Либо написать свой GetHashCode но ххпхпхп
         public override int GetHashCode()
         {
-            return Id.GetHashCode();          
+            return Id.GetHashCode();
         }
     }
 }

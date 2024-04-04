@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DexTg.Entities\DexTg.Entities.csproj" />
+    <ProjectReference Include="..\DexTg.Entities\Domain.csproj" />
   </ItemGroup>
 
 </Project>

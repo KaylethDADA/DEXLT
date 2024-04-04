@@ -1,8 +1,8 @@
-﻿using DexTg.Entities.Primitives;
-using DexTg.Entities.ValueObjects;
+﻿using Domain.Primitives;
+using Domain.ValueObjects;
 using FluentValidation;
 
-namespace DexTg.Entities.Validators
+namespace Domain.Validators
 {
     public class FullNameValidation : AbstractValidator<FullName>
     {

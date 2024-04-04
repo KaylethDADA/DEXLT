@@ -1,8 +1,8 @@
-﻿using DexTg.Entities.Entities;
-using DexTg.Entities.Primitives;
+﻿using Domain.Entities;
+using Domain.Primitives;
 using FluentValidation;
 
-namespace DexTg.Entities.Validators
+namespace Domain.Validators
 {
     public class PersonValidation : AbstractValidator<Person>
     {
