@@ -7,6 +7,7 @@ namespace Application.Mappings
 {
     public class PersonMappingProfile : Profile
     {
+        ///TODO: Вложеные сущности мапить   
         public PersonMappingProfile()
         {
             CreateMap<Person, PersonResponse>()
@@ -49,6 +50,18 @@ namespace Application.Mappings
                     PhoneNumber = x.PhoneNumber,
                     Telegram = x.Telegram
                 });
+
+            CreateMap<Person, PersonItemList>()
+                .ForMember(dest => dest.Id, 
+                    opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.FirstName,
+                    opt => opt.MapFrom(src => src.FullName.FirstName))
+                .ForMember(dest => dest.LastName,
+                    opt => opt.MapFrom(src => src.FullName.LastName))
+                .ForMember(dest => dest.MiddleName,
+                    opt => opt.MapFrom(src => src.FullName.MiddleName))
+                .ForMember(dest => dest.Age,
+                    opt => opt.MapFrom(src => src.Age));
         }
     }
 }

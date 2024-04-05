@@ -34,10 +34,10 @@ namespace Application.Sevices
         /// Получить список Person
         /// </summary>
         /// <returns></returns>
-        public List<PersonResponse> GetAll()
+        public List<PersonItemList> GetList()
         {
             var persons = _personService.GetList();
-            return _mapper.Map<List<PersonResponse>>(persons);
+            return _mapper.Map<List<PersonItemList>>(persons);
         }
         /// <summary>
         /// Создание
@@ -58,6 +58,9 @@ namespace Application.Sevices
         public PersonResponse Update(PersonUpdateRequest request)
         {
             var person = _personService.GetById(request.Id);
+
+            if (person == null)
+                throw new Exception();
 
             person.FullName = new FullName(
                 request.FirstName,

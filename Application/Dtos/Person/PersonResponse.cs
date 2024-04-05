@@ -1,10 +1,43 @@
-﻿namespace Application.Dtos.Person
+﻿using Domain.Primitives.Enums;
+
+namespace Application.Dtos.Person
 {
     /// <summary>
-    /// Дто ответа для Person
+    /// Ответа для Person
     /// </summary>
-    public class PersonResponse : BasePerson
+    public class PersonResponse
     {
-
+        /// <summary>
+        /// Имя
+        /// </summary>
+        public string FirstName { get; init; }
+        /// <summary>
+        /// Фамилия
+        /// </summary>
+        public string LastName { get; init; }
+        /// <summary>
+        /// Отчество
+        /// </summary>
+        public string? MiddleName { get; init; }
+        /// <summary>
+        /// Гендер
+        /// </summary>
+        public Gender Gender { get; init; }
+        /// <summary>
+        /// Дата рождения
+        /// </summary>
+        public DateTime BirthDate { get; init; }
+        /// <summary>
+        /// Возраст
+        /// </summary>
+        public int Age { get; init; }
+        /// <summary>
+        /// Номер телефона
+        /// </summary>
+        public string PhoneNumber { get; init; }
+        /// <summary>
+        /// Никнейм в телеграм
+        /// </summary>
+        public string Telegram { get; init; }
     }
 }
