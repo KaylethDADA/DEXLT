@@ -6,6 +6,20 @@ namespace Domain.Entities
 {
     public class Person : BaseEntity
     {
+        public Person() { }
+        public Person(FullName fullName, DateTime birthDay, string phoneNumber, string telegram, Gender gender, List<CustomField<string>> customFields)
+        {
+            FullName = fullName;
+            BirthDay = birthDay;
+            PhoneNumber = phoneNumber;
+            Telegram = telegram;
+            Gender = gender;
+            CustomFields = customFields;
+
+            var validator = new PersonValidation();
+            validator.Validate(this);
+        }
+
         /// <summary>
         /// Полное имя
         /// </summary>
@@ -34,11 +48,15 @@ namespace Domain.Entities
         /// Кастомные поля
         /// </summary>
         public List<CustomField<string>> CustomFields { get; set; }
-
-        public Person()
+        public Person Update(string? fistName, string? lastName, string? middleName, string phoneNumber)
         {
-            var validationService = new PersonValidation();
-            validationService.Validate(this);
+            FullName.Update(fistName, lastName, middleName);
+            PhoneNumber = phoneNumber;
+
+            var validator = new PersonValidation();
+            validator.Validate(this);
+
+            return this;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Application.Mappings
         ///TODO: Вложеные сущности мапить   
         public PersonMappingProfile()
         {
+
             CreateMap<Person, PersonResponse>()
              .ForMember(x => x.FirstName,
                  o => o.MapFrom(s => s.FullName.FirstName))
@@ -44,11 +45,7 @@ namespace Application.Mappings
                         x.FirstName, 
                         x.LastName, 
                         x.MiddleName
-                    ),
-                    Gender = x.Gender,
-                    BirthDay = x.BirthDate,
-                    PhoneNumber = x.PhoneNumber,
-                    Telegram = x.Telegram
+                    )
                 });
 
             CreateMap<Person, PersonItemList>()

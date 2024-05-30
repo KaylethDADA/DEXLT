@@ -2,7 +2,6 @@
 using Application.Interface;
 using AutoMapper;
 using Domain.Entities;
-using Domain.ValueObjects;
 
 namespace Application.Sevices
 {
@@ -34,7 +33,7 @@ namespace Application.Sevices
         /// Получить список Person
         /// </summary>
         /// <returns></returns>
-        public List<PersonItemList> GetList()
+        public List<PersonItemList> GetAll()
         {
             var persons = _personService.GetList();
             return _mapper.Map<List<PersonItemList>>(persons);
@@ -61,17 +60,6 @@ namespace Application.Sevices
 
             if (person == null)
                 throw new Exception();
-
-            person.FullName = new FullName(
-                request.FirstName,
-                request.LastName,
-                request.MiddleName ?? null
-                );
-
-            person.BirthDay = request.BirthDate;
-            person.Gender = request.Gender;
-            person.PhoneNumber = request.PhoneNumber;
-            person.Telegram = request.Telegram;
 
             _personService.Update(person);
 
