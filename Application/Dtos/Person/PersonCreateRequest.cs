@@ -2,42 +2,14 @@
 
 namespace Application.Dtos.Person
 {
-    /// <summary>
-    /// Запрос для создания Person
-    /// </summary>
     public class PersonCreateRequest
     {
-        /// <summary>
-        /// Имя
-        /// </summary>
-        public string FirstName { get; init; }
-        /// <summary>
-        /// Фамилия
-        /// </summary>
-        public string LastName { get; init; }
-        /// <summary>
-        /// Отчество
-        /// </summary>
-        public string? MiddleName { get; init; }
-        /// <summary>
-        /// Гендер
-        /// </summary>
-        public Gender Gender { get; init; }
-        /// <summary>
-        /// Дата рождения
-        /// </summary>
-        public DateTime BirthDate { get; init; }
-        /// <summary>
-        /// Возраст
-        /// </summary>
-        public int Age { get; init; }
-        /// <summary>
-        /// Номер телефона
-        /// </summary>
-        public string PhoneNumber { get; init; }
-        /// <summary>
-        /// Никнейм в телеграм
-        /// </summary>
-        public string Telegram { get; init; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string? MiddleName { get; set; }
+        public Gender Gender { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Telegram { get; set; }
     }
 }

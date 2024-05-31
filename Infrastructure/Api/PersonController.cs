@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Dtos.Person;
+using Application.Sevices;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Infrastructure.Controllers
+namespace Infrastructure.Api
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -26,7 +28,6 @@ namespace Infrastructure.Controllers
         public IActionResult Create([FromBody] PersonCreateRequest personCreateRequest, [FromServices] PersonService personService)
         {
             var createdPerson = personService.Create(personCreateRequest);
-            //return CreatedAtAction(nameof(GetById), new { id = createdPerson.Id }, createdPerson);
             if (createdPerson == null)
                 return BadRequest();
             return Ok();
@@ -45,10 +46,7 @@ namespace Infrastructure.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id, [FromServices] PersonService personService)
         {
-            var deleted = personService.Delete(id);
-            if (!deleted)
-                return NotFound();
-
+            personService.Delete(id);
             return NoContent();
         }
 

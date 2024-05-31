@@ -3,62 +3,39 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.ValueObjects;
 
-namespace Application.Mappings
+namespace Application.Mapping
 {
     public class PersonMappingProfile : Profile
     {
-        ///TODO: Вложеные сущности мапить   
         public PersonMappingProfile()
         {
+            CreateMap<PersonCreateRequest, Person>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => new FullName(src.FirstName, src.LastName, src.MiddleName)))
+                .ForMember(dest => dest.BirthDay, opt => opt.MapFrom(src => src.BirthDate))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+                .ForMember(dest => dest.Telegram, opt => opt.MapFrom(src => src.Telegram))
+                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
+                .ForMember(dest => dest.CustomFields, opt => opt.Ignore());
 
             CreateMap<Person, PersonResponse>()
-             .ForMember(x => x.FirstName,
-                 o => o.MapFrom(s => s.FullName.FirstName))
-             .ForMember(x => x.LastName,
-                 o => o.MapFrom(s => s.FullName.LastName))
-             .ForMember(x => x.MiddleName,
-                 o => o.MapFrom(s => s.FullName.MiddleName));
-
-            CreateMap<PersonCreateRequest, Person>()
-                .ConstructUsing(x =>
-                new Person()
-                {
-                    FullName = new FullName
-                    (
-                        x.FirstName,
-                        x.LastName,
-                        x.MiddleName
-                    ),
-                    Gender = x.Gender,
-                    BirthDay = x.BirthDate,
-                    PhoneNumber = x.PhoneNumber,
-                    Telegram = x.Telegram,
-                });
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.FirstName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.LastName))
+                .ForMember(dest => dest.MiddleName, opt => opt.MapFrom(src => src.FullName.MiddleName))
+                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
+                .ForMember(dest => dest.BirthDate, opt => opt.MapFrom(src => src.BirthDay))
+                .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+                .ForMember(dest => dest.Telegram, opt => opt.MapFrom(src => src.Telegram));
 
             CreateMap<PersonUpdateRequest, Person>()
-                .ConstructUsing(x => 
-                new Person()
-                {
-                    Id = x.Id,
-                    FullName = new FullName
-                    (
-                        x.FirstName, 
-                        x.LastName, 
-                        x.MiddleName
-                    )
-                });
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => new FullName(src.FirstName, src.LastName, src.MiddleName)))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
 
             CreateMap<Person, PersonItemList>()
-                .ForMember(dest => dest.Id, 
-                    opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.FirstName,
-                    opt => opt.MapFrom(src => src.FullName.FirstName))
-                .ForMember(dest => dest.LastName,
-                    opt => opt.MapFrom(src => src.FullName.LastName))
-                .ForMember(dest => dest.MiddleName,
-                    opt => opt.MapFrom(src => src.FullName.MiddleName))
-                .ForMember(dest => dest.Age,
-                    opt => opt.MapFrom(src => src.Age));
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.FirstName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.LastName))
+                .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age));
         }
     }
 }

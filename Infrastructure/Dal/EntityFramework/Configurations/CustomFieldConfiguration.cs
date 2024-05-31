@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Dal.EntityFramework.Configurations
 {
@@ -8,8 +8,11 @@ namespace Infrastructure.Dal.EntityFramework.Configurations
     {
         public void Configure(EntityTypeBuilder<CustomField<string>> builder)
         {
-            builder.Property<string>(x => x.Name).IsRequired();
-            builder.Property<string>(x => x.Value).IsRequired();
+            builder.Property<string>(x => x.Name)
+                .IsRequired();
+
+            builder.Property<string>(x => x.Value)
+                .IsRequired();
         }
     }
 }

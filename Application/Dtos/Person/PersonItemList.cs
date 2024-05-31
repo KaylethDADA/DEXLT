@@ -2,25 +2,9 @@
 {
     public class PersonItemList
     {
-        /// <summary>
-        /// Id
-        /// </summary>
-        public Guid Id { get; init; }
-        /// <summary>
-        /// Имя
-        /// </summary>
-        public string FirstName { get; init; }
-        /// <summary>
-        /// Фамилия
-        /// </summary>
-        public string LastName { get; init; }
-        /// <summary>
-        /// Отчество
-        /// </summary>
-        public string? MiddleName { get; init; }
-        /// <summary>
-        /// Возраст
-        /// </summary>
-        public int Age { get; init; }
+        public Guid Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Infrastructure.Dal.EntityFramework
 {
@@ -8,6 +7,11 @@ namespace Infrastructure.Dal.EntityFramework
     {
         public DbSet<Person> Persons { get; set; }
         public DbSet<CustomField<string>> CustomFields { get; set; }
+
+        public TelegramBotDbContext(DbContextOptions<TelegramBotDbContext> options)
+            : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
