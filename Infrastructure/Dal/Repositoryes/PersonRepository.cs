@@ -1,4 +1,5 @@
-﻿using Application.Interface;
+﻿using Application.Dtos.Person;
+using Application.Interface;
 using Domain.Entities;
 using Infrastructure.Dal.EntityFramework;
 using Microsoft.EntityFrameworkCore;
@@ -63,6 +64,14 @@ namespace Infrastructure.Dal.Repositoryes
         public async Task SaveChanges()
         {
             await db.SaveChangesAsync();
+        }
+
+        public List<Person> GetBirthdaysToday()
+        {
+            var today = DateTime.Today;
+            var persons = db.Persons.Where(p => p.BirthDay.Month == today.Month && p.BirthDay.Day == today.Day)
+                .ToList();
+            return persons;
         }
     }
 }

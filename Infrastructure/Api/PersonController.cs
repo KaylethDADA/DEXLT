@@ -1,5 +1,6 @@
 ﻿using Application.Dtos.Person;
 using Application.Sevices;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Infrastructure.Api
@@ -13,6 +14,15 @@ namespace Infrastructure.Api
         {
             var persons = personService.GetAll();
             return Ok(persons);
+        }
+
+        [HttpGet("GetBirthdaysToday")]
+        public IActionResult GetBirthdaysToday([FromServices] PersonService personService)
+        {
+            var person = personService.GetBirthdaysToday();
+            if (person == null)
+                return NotFound();
+            return Ok(person);
         }
 
         [HttpGet("{id}")]

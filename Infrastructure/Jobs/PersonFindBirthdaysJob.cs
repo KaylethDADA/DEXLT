@@ -14,7 +14,12 @@ namespace Infrastructure.Jobs
 
         public Task Execute(IJobExecutionContext context)
         {
+            var persons = _personRepository.GetBirthdaysToday();
 
+            foreach (var person in persons)
+            {
+                Console.WriteLine($"У {person.FullName.LastName} {person.FullName.FirstName} сегодня др");
+            }
 
             return Task.CompletedTask;
         }

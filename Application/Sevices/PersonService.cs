@@ -50,7 +50,13 @@ namespace Application.Sevices
 
         public object GetCustomFields(Guid id)
         {
-            throw new NotImplementedException();
+           return _personService.GetCustomFields(id);
+        }
+
+        public List<PersonResponse> GetBirthdaysToday()
+        {
+            var person = _personService.GetBirthdaysToday();
+            return _mapper.Map<List<PersonResponse>>(person);
         }
 
         public void Delete(Guid id)
