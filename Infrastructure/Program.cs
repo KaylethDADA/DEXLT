@@ -22,7 +22,7 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("TelegramBotDataBase");
 builder.Services.AddDbContext<TelegramBotDbContext>(options => options.UseNpgsql(connectionString));
 // Чтение данных конфигурации и регистрация сервиса
-builder.Services.Configure<CronExpressions>(builder.Configuration.GetSection("CronExpressions"));
+builder.Services.Configure<CronExpressions>(builder.Configuration.GetSection(CronExpressions.Configuration));
 // Построение поставщика служб
 var serviceProvider = builder.Services.BuildServiceProvider();
 // Получение сервиса CronExpressions из поставщика служб

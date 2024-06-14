@@ -1,6 +1,5 @@
 ﻿using Application.Dtos.Person;
 using Application.Sevices;
-using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Infrastructure.Api
@@ -25,7 +24,7 @@ namespace Infrastructure.Api
             return Ok(person);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetById")]
         public IActionResult GetById(Guid id, [FromServices] PersonService personService)
         {
             var person = personService.GetById(id);
@@ -43,7 +42,7 @@ namespace Infrastructure.Api
             return Ok();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public IActionResult Update(Guid id, [FromBody] PersonUpdateRequest personUpdateRequest, [FromServices] PersonService personService)
         {
             if (id != personUpdateRequest.Id)
@@ -53,14 +52,14 @@ namespace Infrastructure.Api
             return Ok(updatedPerson);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete")]
         public IActionResult Delete(Guid id, [FromServices] PersonService personService)
         {
             personService.Delete(id);
             return NoContent();
         }
 
-        [HttpGet("{id}/CustomFields")]
+        [HttpGet("GetCustomFields")]
         public IActionResult GetCustomFields(Guid id, [FromServices] PersonService personService)
         {
             var customFields = personService.GetCustomFields(id);
