@@ -53,10 +53,10 @@ namespace Application.Sevices
            return _personService.GetCustomFields(id);
         }
 
-        public List<PersonResponse> GetBirthdaysToday()
+        public List<PersonItemList> GetBirthdaysToday()
         {
             var person = _personService.GetBirthdaysToday();
-            return _mapper.Map<List<PersonResponse>>(person);
+            return _mapper.Map<List<PersonItemList>>(person);
         }
 
         public void Delete(Guid id)

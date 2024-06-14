@@ -20,7 +20,6 @@
             if (obj is not BaseEntity entity)
                 return false;
 
-            //id == entity.id
             return GetHashCode() == entity.GetHashCode();
         }
         /// <summary>

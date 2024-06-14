@@ -13,27 +13,15 @@ namespace Domain.ValueObjects
         public override bool Equals(object? obj)
         {
 
-            //if (obj is not BaseValueObjects entity)
-            //{
-            //    return false;
-            //}
-
-            //if (entity == null)
-            //{
-            //    return false;
-            //}
-
             if (obj is not BaseValueObjects entity || entity == null)
                 return false;
 
             var serialEnti = Serialize(entity);
             var serialThis = Serialize(this);
 
-            ///TODO: Разобраться в String.Compare
             if (string.Compare(serialEnti, serialThis) != 0)
                 return false;
 
-            ///TODO: Написать сравнение через рефлексию через DeepCompare
             return true;
         }
         /// <summary>
@@ -42,8 +30,6 @@ namespace Domain.ValueObjects
         /// <returns></returns>
         public override int GetHashCode()
         {
-            //TODO:Реализовать getHashCode
-            //У стринги получать код легче получить + 
             return Serialize(this).GetHashCode();
         }
         /// <summary>

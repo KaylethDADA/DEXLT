@@ -31,22 +31,17 @@ namespace Domain.ValueObjects
             if (other == null)
                 return false;
 
-            // получаем все свойства объекта текущего экземпляра 
             PropertyInfo[] properties = typeof(FullName).GetProperties();
 
-            // проходимся по каждому свойству
             foreach (var property in properties)
             {
-                // получаем значения свойств для текущего экземпляра (this) и для другого объекта (other)
                 var thisValue = property.GetValue(this);
                 var otherValue = property.GetValue(other);
 
-                // сравниваем значения свойств
                 if (!Equals(thisValue, otherValue))
                     return false;
             }
 
-            // если все свойства эквивалентны
             return true;
         }
         /// <summary>

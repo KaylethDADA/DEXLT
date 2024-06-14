@@ -1,6 +1,6 @@
+using Application;
 using Application.Interface;
 using Application.Mapping;
-using Application.Sevices;
 using Infrastructure.Dal.EntityFramework;
 using Infrastructure.Dal.Repositoryes;
 using Infrastructure.Jobs;
@@ -9,12 +9,13 @@ using Microsoft.EntityFrameworkCore;
 using Quartz;
 using System.Reflection;
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Регистрация сервисов
+builder.Services.AddServiceApplication();
 
 builder.Services.AddControllers();
 
@@ -29,12 +30,12 @@ builder.Services.Configure<TelegramSettings>(builder.Configuration.GetSection(na
 // Получение CronExpressions из поставщика служб
 var cronExpressions = builder.Configuration.GetSection(nameof(CronExpressionsSettings)).Get<CronExpressionsSettings>();
 
+// Регистрация repositoryes
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 // Регистрация профиля AutoMapper
 builder.Services.AddAutoMapper(typeof(PersonMappingProfile));
 builder.Services.AddAutoMapper(typeof(CustomFieldListConverter));
-
 // Регистрация профилей AutoMapper
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -56,9 +57,6 @@ builder.Services.AddQuartzHostedService(x =>
 {
     x.WaitForJobsToComplete = true;
 });
-
-// Добавление сервисов
-builder.Services.AddScoped<PersonService>();
 
 var app = builder.Build();
 
