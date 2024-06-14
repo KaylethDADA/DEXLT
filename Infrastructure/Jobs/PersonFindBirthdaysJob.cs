@@ -1,27 +1,43 @@
 ﻿using Application.Interface;
+using Infrastructure.Settings;
+using Microsoft.Extensions.Options;
 using Quartz;
+using Telegram.Bot;
 
 namespace Infrastructure.Jobs
 {
     public class PersonFindBirthdaysJob : IJob
     {
         private readonly IPersonRepository _personRepository;
+        private readonly TelegramSettings _telegramSettings;
+        private readonly TelegramBotClient _telegramBotClient;
 
-        public PersonFindBirthdaysJob(IPersonRepository personRepository)
+        public PersonFindBirthdaysJob(IPersonRepository personRepository, IOptions<TelegramSettings> telegramSettings)
         {
             _personRepository = personRepository;
+            _telegramSettings = telegramSettings.Value;
+            _telegramBotClient = new TelegramBotClient(_telegramSettings.BotToken);
         }
 
-        public Task Execute(IJobExecutionContext context)
+        public async Task Execute(IJobExecutionContext context)
         {
-            var persons = _personRepository.GetBirthdaysToday();
+            await SendMesssageAsync(DateTime.Now.ToString());
+        }
 
-            foreach (var person in persons)
+        public async Task SendMesssageAsync(string message)
+        {
+            try
             {
-                Console.WriteLine($"У {person.FullName.LastName} {person.FullName.FirstName} сегодня др");
+                var persons = _personRepository.GetBirthdaysToday();
+                foreach (var person in persons)
+                {
+                    await _telegramBotClient.SendTextMessageAsync(_telegramSettings.ChatId, $"У {person.Telegram} сегодня др");
+                }
             }
-
-            return Task.CompletedTask;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

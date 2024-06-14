@@ -1,5 +1,4 @@
-﻿using Application.Dtos.Person;
-using Application.Interface;
+﻿using Application.Interface;
 using Domain.Entities;
 using Infrastructure.Dal.EntityFramework;
 using Microsoft.EntityFrameworkCore;

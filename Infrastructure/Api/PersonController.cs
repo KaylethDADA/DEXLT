@@ -39,6 +39,7 @@ namespace Infrastructure.Api
             var createdPerson = personService.Create(personCreateRequest);
             if (createdPerson == null)
                 return BadRequest();
+
             return Ok();
         }
 

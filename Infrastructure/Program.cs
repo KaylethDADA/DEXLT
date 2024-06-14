@@ -4,11 +4,11 @@ using Application.Sevices;
 using Infrastructure.Dal.EntityFramework;
 using Infrastructure.Dal.Repositoryes;
 using Infrastructure.Jobs;
-using Infrastructure.Options;
+using Infrastructure.Settings;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Quartz;
 using System.Reflection;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,15 +18,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
-//получение строки подключения из конфигурационного файла
+// Получение строки подключения из конфигурационного файла
 var connectionString = builder.Configuration.GetConnectionString("TelegramBotDataBase");
 builder.Services.AddDbContext<TelegramBotDbContext>(options => options.UseNpgsql(connectionString));
-// Чтение данных конфигурации и регистрация сервиса
-builder.Services.Configure<CronExpressions>(builder.Configuration.GetSection(CronExpressions.Configuration));
-// Построение поставщика служб
-var serviceProvider = builder.Services.BuildServiceProvider();
-// Получение сервиса CronExpressions из поставщика служб
-var cronExpressions = serviceProvider.GetRequiredService<IOptions<CronExpressions>>().Value;
+
+// Регистрации настроек
+builder.Services.Configure<CronExpressionsSettings>(builder.Configuration.GetSection(nameof(CronExpressionsSettings)));
+builder.Services.Configure<TelegramSettings>(builder.Configuration.GetSection(nameof(TelegramSettings)));
+
+// Получение CronExpressions из поставщика служб
+var cronExpressions = builder.Configuration.GetSection(nameof(CronExpressionsSettings)).Get<CronExpressionsSettings>();
 
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
@@ -37,15 +38,15 @@ builder.Services.AddAutoMapper(typeof(CustomFieldListConverter));
 // Регистрация профилей AutoMapper
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-//Quartz
+// Quartz
 builder.Services.AddQuartz(x =>
 {
     x.UseMicrosoftDependencyInjectionJobFactory();
 
-    var jobKey = new JobKey("TestJob");
+    var jobKey = new JobKey("PersonFindBirthdaysJob");
     x.AddJob<PersonFindBirthdaysJob>(opts => opts.WithIdentity(jobKey));
 
-    var triggerKey = new TriggerKey("TestJobTrigger");
+    var triggerKey = new TriggerKey("PersonFindBirthdaysJob");
     x.AddTrigger(opts => opts.ForJob(jobKey)
     .WithIdentity(triggerKey)
     .WithCronSchedule(cronExpressions.StartPersonJob));
@@ -56,6 +57,7 @@ builder.Services.AddQuartzHostedService(x =>
     x.WaitForJobsToComplete = true;
 });
 
+// Добавление сервисов
 builder.Services.AddScoped<PersonService>();
 
 var app = builder.Build();
@@ -68,14 +70,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-
 app.MapControllers();
-
-/*app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers(); // Этот метод определяет маршруты для контроллеров, которые вы определили в вашем приложении
-});*/
-
 app.UseHttpsRedirection();
 
 app.Run();
